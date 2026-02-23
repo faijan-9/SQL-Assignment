@@ -1,0 +1,2442 @@
+Last login: Mon Feb 23 12:33:35 on ttys000
+mrfaijan@mrs-MacBook-Air ~ % docker pull gvenzl/oracle-xe:21
+21: Pulling from gvenzl/oracle-xe
+Digest: sha256:c2682a4216b0fe65537912c4a049c7e5c15a85bb7c94bb8137d5f2d2eef60603
+Status: Image is up to date for gvenzl/oracle-xe:21
+docker.io/gvenzl/oracle-xe:21
+mrfaijan@mrs-MacBook-Air ~ % docker run -d \              
+  --name oracle-xe-21c \
+  -p 1521:1521 \
+  -p 5500:5500 \
+  -e ORACLE_PASSWORD=oracle \
+  gvenzl/oracle-xe:21
+docker: Error response from daemon: Conflict. The container name "/oracle-xe-21c" is already in use by container "71ea5dd6fc9d4d802a27d0298ac8cc59a6028ea2e2685dd5983930f1a53be57f". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+mrfaijan@mrs-MacBook-Air ~ % docker ps
+CONTAINER ID   IMAGE                 COMMAND                  CREATED       STATUS          PORTS                                                                                      NAMES
+71ea5dd6fc9d   gvenzl/oracle-xe:21   "container-entrypoin…"   4 weeks ago   Up 12 minutes   0.0.0.0:1521->1521/tcp, [::]:1521->1521/tcp, 0.0.0.0:5500->5500/tcp, [::]:5500->5500/tcp   oracle-xe-21c
+mrfaijan@mrs-MacBook-Air ~ % docker logs oracle-xe-21c
+CONTAINER: starting up...
+CONTAINER: first database startup, initializing...
+CONTAINER: uncompressing database data files, please wait...
+CONTAINER: done uncompressing database data files, duration: 4 seconds.
+CONTAINER: starting up Oracle Database...
+
+LSNRCTL for Linux: Version 21.0.0.0.0 - Production on 19-JAN-2026 09:19:51
+
+Copyright (c) 1991, 2021, Oracle.  All rights reserved.
+
+Starting /opt/oracle/product/21c/dbhomeXE/bin/tnslsnr: please wait...
+
+TNSLSNR for Linux: Version 21.0.0.0.0 - Production
+System parameter file is /opt/oracle/homes/OraDBHome21cXE/network/admin/listener.ora
+Log messages written to /opt/oracle/diag/tnslsnr/71ea5dd6fc9d/listener/alert/log.xml
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC_FOR_XE)))
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=0.0.0.0)(PORT=1521)))
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC_FOR_XE)))
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for Linux: Version 21.0.0.0.0 - Production
+Start Date                19-JAN-2026 09:19:51
+Uptime                    0 days 0 hr. 0 min. 0 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Default Service           XE
+Listener Parameter File   /opt/oracle/homes/OraDBHome21cXE/network/admin/listener.ora
+Listener Log File         /opt/oracle/diag/tnslsnr/71ea5dd6fc9d/listener/alert/log.xml
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC_FOR_XE)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=0.0.0.0)(PORT=1521)))
+The listener supports no services
+The command completed successfully
+ORACLE instance started.
+
+Total System Global Area 1610612120 bytes
+Fixed Size		    9686424 bytes
+Variable Size		  603979776 bytes
+Database Buffers	  989855744 bytes
+Redo Buffers		    7090176 bytes
+Database mounted.
+Database opened.
+
+CONTAINER: Resetting SYS and SYSTEM passwords.
+
+User altered.
+
+
+User altered.
+
+
+#########################
+DATABASE IS READY TO USE!
+#########################
+
+################################################
+NOTICE: YOU ARE USING AN OLD IMAGE VERSION!
+PLEASE CONSIDER UPGRADING TO gvenzl/oracle-free!
+################################################
+
+##################################################################
+CONTAINER: The following output is now from the alert_XE.log file:
+##################################################################
+ORA-06512: at "SYS.DBMS_QOPATCH", line 2327
+ORA-06512: at "SYS.DBMS_QOPATCH", line 854
+ORA-06512: at "SYS.DBMS_QOPATCH", line 634
+ORA-06512: at "SYS.DBMS_QOPATCH", line 2309
+
+===========================================================
+Dumping current patch information
+===========================================================
+Unable to obtain current patch information due to error: 20013
+===========================================================
+2026-01-19T09:20:06.835823+00:00
+TABLE SYS.WRP$_REPORTS: ADDED INTERVAL PARTITION SYS_P348 (5863) VALUES LESS THAN (TO_DATE(' 2026-01-20 01:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRP$_REPORTS_DETAILS: ADDED INTERVAL PARTITION SYS_P349 (5863) VALUES LESS THAN (TO_DATE(' 2026-01-20 01:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRP$_REPORTS_TIME_BANDS: ADDED INTERVAL PARTITION SYS_P352 (5862) VALUES LESS THAN (TO_DATE(' 2026-01-19 01:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-19T09:25:04.131411+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P360 (46040) VALUES LESS THAN (TO_DATE(' 2026-01-20 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P363 (46040) VALUES LESS THAN (TO_DATE(' 2026-01-20 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-19T09:25:04.681937+00:00
+Thread 1 advanced to log sequence 15 (LGWR switch),  current SCN: 2859073
+  Current log# 1 seq# 15 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T09:40:05.445256+00:00
+Thread 1 advanced to log sequence 16 (LGWR switch),  current SCN: 2863580
+  Current log# 2 seq# 16 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T10:34:07.691141+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T11:40:03.231505+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T12:41:11.572352+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T12:41:31.278377+00:00
+Thread 1 advanced to log sequence 17 (LGWR switch),  current SCN: 2870872
+  Current log# 1 seq# 17 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T14:06:16.754452+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T15:07:00.046417+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T16:14:24.373801+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T17:09:04.599798+00:00
+Thread 1 cannot allocate new log, sequence 18
+Checkpoint not complete
+  Current log# 1 seq# 17 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T17:09:07.611476+00:00
+Thread 1 advanced to log sequence 18 (LGWR switch),  current SCN: 2872863
+  Current log# 2 seq# 18 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T17:26:14.406827+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T18:32:05.293779+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T19:34:11.187680+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T20:09:01.954303+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P365 (46040) VALUES LESS THAN (TO_DATE(' 2026-01-20 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P368 (46040) VALUES LESS THAN (TO_DATE(' 2026-01-20 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-19T20:09:03.663163+00:00
+Thread 1 cannot allocate new log, sequence 19
+Checkpoint not complete
+  Current log# 2 seq# 18 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T20:09:06.070803+00:00
+Thread 1 advanced to log sequence 19 (LGWR switch),  current SCN: 2880314
+  Current log# 1 seq# 19 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T20:39:53.099415+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T20:39:53.246556+00:00
+AWR automatic snapshot ID (10) has failed: DBID = 3062126794, CON_DBID = 3062126794, ERROR = 12751.
+2026-01-19T21:46:19.782503+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T21:46:46.597615+00:00
+Thread 1 cannot allocate new log, sequence 20
+Checkpoint not complete
+  Current log# 1 seq# 19 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T21:46:49.086558+00:00
+Thread 1 advanced to log sequence 20 (LGWR switch),  current SCN: 2890605
+  Current log# 2 seq# 20 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T22:19:44.333745+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-19T22:19:56.768500+00:00
+Thread 1 advanced to log sequence 21 (LGWR switch),  current SCN: 2902620
+  Current log# 1 seq# 21 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T22:20:05.770664+00:00
+Thread 1 cannot allocate new log, sequence 22
+Checkpoint not complete
+  Current log# 1 seq# 21 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T22:20:08.488203+00:00
+Thread 1 advanced to log sequence 22 (LGWR switch),  current SCN: 2910137
+  Current log# 2 seq# 22 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T22:20:09.531628+00:00
+XEPDB1(3):Resize operation completed for file# 9, fname /opt/oracle/oradata/XE/XEPDB1/system01.dbf, old size 278528K, new size 288768K
+2026-01-19T22:51:10.086844+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T22:51:15.395732+00:00
+Thread 1 cannot allocate new log, sequence 23
+Checkpoint not complete
+  Current log# 2 seq# 22 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T22:51:18.320618+00:00
+Thread 1 advanced to log sequence 23 (LGWR switch),  current SCN: 2922372
+  Current log# 1 seq# 23 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T22:51:24.395236+00:00
+Thread 1 cannot allocate new log, sequence 24
+Checkpoint not complete
+  Current log# 1 seq# 23 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T22:51:27.412635+00:00
+Thread 1 advanced to log sequence 24 (LGWR switch),  current SCN: 2930746
+  Current log# 2 seq# 24 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T22:51:31.032738+00:00
+XEPDB1(3):Resize operation completed for file# 19, fname /opt/oracle/oradata/XE/XEPDB1/undotbs01.dbf, old size 11264K, new size 21504K
+2026-01-19T22:51:33.414900+00:00
+Thread 1 advanced to log sequence 25 (LGWR switch),  current SCN: 2937741
+  Current log# 1 seq# 25 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T22:51:36.877746+00:00
+Resize operation completed for file# 15, fname /opt/oracle/oradata/XE/undotbs01.dbf, old size 11264K, new size 21504K
+2026-01-19T23:51:21.268481+00:00
+Thread 1 cannot allocate new log, sequence 26
+Checkpoint not complete
+  Current log# 1 seq# 25 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T23:51:21.696025+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-19T23:51:24.355914+00:00
+Thread 1 advanced to log sequence 26 (LGWR switch),  current SCN: 2942709
+  Current log# 2 seq# 26 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T23:51:30.354991+00:00
+Thread 1 cannot allocate new log, sequence 27
+Checkpoint not complete
+  Current log# 2 seq# 26 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T23:51:32.961257+00:00
+Thread 1 advanced to log sequence 27 (LGWR switch),  current SCN: 2951490
+  Current log# 1 seq# 27 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T23:51:33.343803+00:00
+XEPDB1(3):Resize operation completed for file# 19, fname /opt/oracle/oradata/XE/XEPDB1/undotbs01.dbf, old size 21504K, new size 31744K
+2026-01-19T23:51:39.359755+00:00
+Thread 1 cannot allocate new log, sequence 28
+Checkpoint not complete
+  Current log# 1 seq# 27 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-19T23:51:41.405829+00:00
+Thread 1 advanced to log sequence 28 (LGWR switch),  current SCN: 2959901
+  Current log# 2 seq# 28 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T23:51:48.365033+00:00
+Thread 1 cannot allocate new log, sequence 29
+Checkpoint not complete
+  Current log# 2 seq# 28 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-19T23:51:50.391367+00:00
+Thread 1 advanced to log sequence 29 (LGWR switch),  current SCN: 2969446
+  Current log# 1 seq# 29 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-20T00:08:43.616469+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P368 (46041) VALUES LESS THAN (TO_DATE(' 2026-01-21 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-20T00:08:43.631417+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P388 (46041) VALUES LESS THAN (TO_DATE(' 2026-01-21 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P371 (46041) VALUES LESS THAN (TO_DATE(' 2026-01-21 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P391 (46041) VALUES LESS THAN (TO_DATE(' 2026-01-21 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-20T00:08:49.669261+00:00
+Thread 1 cannot allocate new log, sequence 30
+Checkpoint not complete
+  Current log# 1 seq# 29 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-20T00:08:51.698654+00:00
+Resize operation completed for file# 15, fname /opt/oracle/oradata/XE/undotbs01.dbf, old size 21504K, new size 31744K
+2026-01-20T00:08:52.666354+00:00
+Thread 1 advanced to log sequence 30 (LGWR switch),  current SCN: 2987670
+  Current log# 2 seq# 30 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-20T01:19:08.663404+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T02:22:15.754098+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T02:22:15.829839+00:00
+Thread 1 cannot allocate new log, sequence 31
+Checkpoint not complete
+  Current log# 2 seq# 30 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-20T02:22:18.843749+00:00
+Thread 1 advanced to log sequence 31 (LGWR switch),  current SCN: 2990576
+  Current log# 1 seq# 31 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-20T03:36:39.412596+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T04:38:47.874437+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T05:39:45.652308+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T06:55:29.722268+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T07:59:34.277359+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T07:59:34.382702+00:00
+Thread 1 cannot allocate new log, sequence 32
+Checkpoint not complete
+  Current log# 1 seq# 31 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-20T07:59:37.388951+00:00
+Thread 1 advanced to log sequence 32 (LGWR switch),  current SCN: 2992555
+  Current log# 2 seq# 32 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-20T09:01:28.892869+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T09:32:33.582654+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 573440K, new size 583680K
+2026-01-20T10:06:05.318137+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T10:06:05.439748+00:00
+AWR automatic snapshot ID (20) has failed: DBID = 3062126794, CON_DBID = 3062126794, ERROR = 12751.
+2026-01-20T11:13:33.025373+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T12:18:54.782891+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T12:18:58.453259+00:00
+Thread 1 cannot allocate new log, sequence 33
+Checkpoint not complete
+  Current log# 2 seq# 32 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-20T12:19:01.467152+00:00
+Thread 1 advanced to log sequence 33 (LGWR switch),  current SCN: 2994108
+  Current log# 1 seq# 33 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-20T13:21:47.555411+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T14:34:48.211655+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T15:03:14.764684+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 583680K, new size 593920K
+2026-01-20T15:12:07.220033+00:00
+Thread 1 advanced to log sequence 34 (LGWR switch),  current SCN: 2999110
+  Current log# 2 seq# 34 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-20T15:44:11.317058+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T16:53:50.984325+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-20T18:58:54.511785+00:00
+Thread 1 advanced to log sequence 35 (LGWR switch),  current SCN: 3005773
+  Current log# 1 seq# 35 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-20T19:22:06.410166+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T11:34:10.312409+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T11:43:35.813760+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 593920K, new size 614400K
+2026-01-21T11:43:38.225969+00:00
+Thread 1 advanced to log sequence 36 (LGWR switch),  current SCN: 3012636
+  Current log# 2 seq# 36 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-21T12:48:56.243110+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T13:48:09.837604+00:00
+TABLE SYS.WRP$_REPORTS: ADDED INTERVAL PARTITION SYS_P428 (5865) VALUES LESS THAN (TO_DATE(' 2026-01-22 01:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRP$_REPORTS_DETAILS: ADDED INTERVAL PARTITION SYS_P429 (5865) VALUES LESS THAN (TO_DATE(' 2026-01-22 01:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRP$_REPORTS_TIME_BANDS: ADDED INTERVAL PARTITION SYS_P432 (5864) VALUES LESS THAN (TO_DATE(' 2026-01-21 01:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-21T13:57:27.131707+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T13:58:05.126576+00:00
+Thread 1 advanced to log sequence 37 (LGWR switch),  current SCN: 3023535
+  Current log# 1 seq# 37 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-21T13:58:37.237682+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 614400K, new size 624640K
+2026-01-21T14:13:07.558826+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P408 (46042) VALUES LESS THAN (TO_DATE(' 2026-01-22 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P411 (46042) VALUES LESS THAN (TO_DATE(' 2026-01-22 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-21T14:57:30.205031+00:00
+Thread 1 advanced to log sequence 38 (LGWR switch),  current SCN: 3028762
+  Current log# 2 seq# 38 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-21T15:35:28.518044+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T16:05:06.974207+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 624640K, new size 634880K
+2026-01-21T16:38:30.369991+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T17:01:11.294025+00:00
+Thread 1 advanced to log sequence 39 (LGWR switch),  current SCN: 3033672
+  Current log# 1 seq# 39 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-21T17:40:05.362920+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T19:05:57.196287+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T20:39:15.830244+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T21:46:19.129384+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T22:03:58.613292+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-21T22:04:01.159675+00:00
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-21T22:04:05.575712+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P433 (46042) VALUES LESS THAN (TO_DATE(' 2026-01-22 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P436 (46042) VALUES LESS THAN (TO_DATE(' 2026-01-22 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-21T22:04:08.149854+00:00
+Thread 1 advanced to log sequence 40 (LGWR switch),  current SCN: 3039865
+  Current log# 2 seq# 40 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-21T22:04:11.911191+00:00
+Thread 1 cannot allocate new log, sequence 41
+Checkpoint not complete
+  Current log# 2 seq# 40 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-21T22:04:13.511638+00:00
+Thread 1 advanced to log sequence 41 (LGWR switch),  current SCN: 3044634
+  Current log# 1 seq# 41 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-21T22:04:17.913869+00:00
+Thread 1 cannot allocate new log, sequence 42
+Checkpoint not complete
+  Current log# 1 seq# 41 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-21T22:04:19.067689+00:00
+Thread 1 advanced to log sequence 42 (LGWR switch),  current SCN: 3053397
+  Current log# 2 seq# 42 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-21T22:56:48.746765+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-21T22:56:49.315688+00:00
+AWR automatic snapshot ID (38) has failed: DBID = 3062126794, CON_DBID = 3062126794, ERROR = 12751.
+2026-01-21T22:56:50.440593+00:00
+Thread 1 cannot allocate new log, sequence 43
+Checkpoint not complete
+  Current log# 2 seq# 42 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-21T22:56:53.452975+00:00
+Thread 1 advanced to log sequence 43 (LGWR switch),  current SCN: 3063201
+  Current log# 1 seq# 43 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-21T22:56:59.456955+00:00
+Thread 1 cannot allocate new log, sequence 44
+Checkpoint not complete
+  Current log# 1 seq# 43 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-21T22:57:02.253917+00:00
+Thread 1 advanced to log sequence 44 (LGWR switch),  current SCN: 3079588
+  Current log# 2 seq# 44 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-22T00:00:03.715261+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T01:06:53.580610+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T01:42:12.034780+00:00
+Suspending MMON slave action kebmatskdslv_ for 104400 seconds
+2026-01-22T01:42:12.036979+00:00
+Timed out trying to start process M002.
+2026-01-22T01:42:12.073558+00:00
+AWR automatic snapshot ID (39) has failed: DBID = 3062126794, CON_DBID = 3062126794, ERROR = 12751.
+2026-01-22T02:15:54.461739+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T03:16:26.815476+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T04:31:52.706394+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T05:32:33.881822+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T05:32:38.621544+00:00
+Thread 1 cannot allocate new log, sequence 45
+Checkpoint not complete
+  Current log# 2 seq# 44 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-22T05:32:41.631516+00:00
+Thread 1 advanced to log sequence 45 (LGWR switch),  current SCN: 3081498
+  Current log# 1 seq# 45 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-22T06:35:35.834349+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T07:51:37.879165+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T08:56:55.221164+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T10:08:32.479499+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T10:08:32.487531+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 634880K, new size 645120K
+2026-01-22T10:36:44.358492+00:00
+Thread 1 cannot allocate new log, sequence 46
+Checkpoint not complete
+  Current log# 1 seq# 45 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-22T10:36:47.371701+00:00
+Thread 1 advanced to log sequence 46 (LGWR switch),  current SCN: 3085111
+  Current log# 2 seq# 46 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-22T11:11:44.761405+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T12:30:19.589908+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T13:39:55.579432+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T14:40:38.834696+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T15:41:51.009777+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T15:41:56.361764+00:00
+Thread 1 cannot allocate new log, sequence 47
+Checkpoint not complete
+  Current log# 2 seq# 46 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-22T15:41:59.372305+00:00
+Thread 1 advanced to log sequence 47 (LGWR switch),  current SCN: 3086645
+  Current log# 1 seq# 47 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-22T16:39:01.086767+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 645120K, new size 655360K
+2026-01-22T17:32:58.231503+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T17:58:28.528937+00:00
+Thread 1 advanced to log sequence 48 (LGWR switch),  current SCN: 3091623
+  Current log# 2 seq# 48 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-22T18:39:39.195273+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T19:48:43.652756+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T20:58:11.906060+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T22:03:19.127580+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-22T22:03:22.300802+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-22T22:03:24.747420+00:00
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-22T22:03:31.141708+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P448 (46043) VALUES LESS THAN (TO_DATE(' 2026-01-23 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P451 (46043) VALUES LESS THAN (TO_DATE(' 2026-01-23 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-22T22:03:33.886616+00:00
+Thread 1 cannot allocate new log, sequence 49
+Private strand flush not complete
+  Current log# 2 seq# 48 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-22T22:03:33.929016+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P428 (46043) VALUES LESS THAN (TO_DATE(' 2026-01-23 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P431 (46043) VALUES LESS THAN (TO_DATE(' 2026-01-23 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-22T22:03:36.091411+00:00
+Thread 1 advanced to log sequence 49 (LGWR switch),  current SCN: 3098295
+  Current log# 1 seq# 49 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-22T22:03:39.885440+00:00
+Thread 1 cannot allocate new log, sequence 50
+Checkpoint not complete
+  Current log# 1 seq# 49 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-22T22:03:42.023701+00:00
+Thread 1 advanced to log sequence 50 (LGWR switch),  current SCN: 3100952
+  Current log# 2 seq# 50 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-22T22:03:45.881181+00:00
+Thread 1 cannot allocate new log, sequence 51
+Checkpoint not complete
+  Current log# 2 seq# 50 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-22T22:03:48.156599+00:00
+Thread 1 advanced to log sequence 51 (LGWR switch),  current SCN: 3107284
+  Current log# 1 seq# 51 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-22T22:03:48.230394+00:00
+Resize operation completed for file# 1, fname /opt/oracle/oradata/XE/system01.dbf, old size 896000K, new size 906240K
+2026-01-22T22:38:00.751809+00:00
+Thread 1 cannot allocate new log, sequence 52
+Checkpoint not complete
+  Current log# 1 seq# 51 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-22T22:38:03.184622+00:00
+Thread 1 advanced to log sequence 52 (LGWR switch),  current SCN: 3117985
+  Current log# 2 seq# 52 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-22T23:08:41.014918+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T00:10:46.498671+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T01:25:36.683349+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T02:00:37.621268+00:00
+Thread 1 advanced to log sequence 53 (LGWR switch),  current SCN: 3122469
+  Current log# 1 seq# 53 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T02:37:25.811496+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T03:52:56.563818+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T04:39:37.047127+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 655360K, new size 665600K
+2026-01-23T04:39:37.227148+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 665600K, new size 696320K
+2026-01-23T04:55:34.025319+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T05:36:28.458774+00:00
+Thread 1 cannot allocate new log, sequence 54
+Checkpoint not complete
+  Current log# 1 seq# 53 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T05:36:31.462179+00:00
+Thread 1 advanced to log sequence 54 (LGWR switch),  current SCN: 3123991
+  Current log# 2 seq# 54 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-23T06:49:41.581202+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T07:56:01.852087+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T09:08:08.932800+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T09:08:09.116383+00:00
+Thread 1 advanced to log sequence 55 (LGWR switch),  current SCN: 3131670
+  Current log# 1 seq# 55 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T10:21:54.868362+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T11:24:39.344384+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T11:53:22.361234+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 696320K, new size 706560K
+2026-01-23T12:28:56.597194+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T13:27:45.143305+00:00
+Thread 1 cannot allocate new log, sequence 56
+Checkpoint not complete
+  Current log# 1 seq# 55 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T13:27:48.153186+00:00
+Thread 1 advanced to log sequence 56 (LGWR switch),  current SCN: 3133095
+  Current log# 2 seq# 56 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-23T13:38:21.213698+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T14:39:04.082139+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T15:40:16.146884+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T16:40:58.360724+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T17:42:11.581621+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T18:42:53.929231+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T18:42:57.778522+00:00
+Thread 1 cannot allocate new log, sequence 57
+Checkpoint not complete
+  Current log# 2 seq# 56 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-23T18:43:00.785302+00:00
+Thread 1 advanced to log sequence 57 (LGWR switch),  current SCN: 3134865
+  Current log# 1 seq# 57 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T19:44:06.486869+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T20:48:53.167573+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T21:54:49.960911+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T22:11:56.926529+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-23T22:11:59.100763+00:00
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-23T22:12:04.661592+00:00
+Thread 1 cannot allocate new log, sequence 58
+Checkpoint not complete
+  Current log# 1 seq# 57 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T22:12:04.906431+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P480 (46044) VALUES LESS THAN (TO_DATE(' 2026-01-24 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P483 (46044) VALUES LESS THAN (TO_DATE(' 2026-01-24 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-23T22:12:06.204786+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P460 (46044) VALUES LESS THAN (TO_DATE(' 2026-01-24 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P463 (46044) VALUES LESS THAN (TO_DATE(' 2026-01-24 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-23T22:12:07.152222+00:00
+Thread 1 advanced to log sequence 58 (LGWR switch),  current SCN: 3139880
+  Current log# 2 seq# 58 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-23T22:12:10.667946+00:00
+Thread 1 cannot allocate new log, sequence 59
+Checkpoint not complete
+  Current log# 2 seq# 58 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-23T22:12:11.097169+00:00
+Thread 1 advanced to log sequence 59 (LGWR switch),  current SCN: 3143390
+  Current log# 1 seq# 59 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T22:12:16.668580+00:00
+Thread 1 cannot allocate new log, sequence 60
+Checkpoint not complete
+  Current log# 1 seq# 59 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T22:12:17.232964+00:00
+Thread 1 advanced to log sequence 60 (LGWR switch),  current SCN: 3152119
+  Current log# 2 seq# 60 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-23T23:01:41.589904+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-23T23:01:43.162692+00:00
+Thread 1 cannot allocate new log, sequence 61
+Checkpoint not complete
+  Current log# 2 seq# 60 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-23T23:01:46.157824+00:00
+Thread 1 advanced to log sequence 61 (LGWR switch),  current SCN: 3162178
+  Current log# 1 seq# 61 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T23:01:52.180912+00:00
+Thread 1 cannot allocate new log, sequence 62
+Checkpoint not complete
+  Current log# 1 seq# 61 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-23T23:01:55.195553+00:00
+Thread 1 advanced to log sequence 62 (LGWR switch),  current SCN: 3174047
+  Current log# 2 seq# 62 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T00:11:46.014444+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T01:15:32.212095+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T01:15:53.807506+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 706560K, new size 727040K
+2026-01-24T02:26:38.545367+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T02:26:45.695257+00:00
+Thread 1 cannot allocate new log, sequence 63
+Checkpoint not complete
+  Current log# 2 seq# 62 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T02:26:48.716301+00:00
+Thread 1 advanced to log sequence 63 (LGWR switch),  current SCN: 3176568
+  Current log# 1 seq# 63 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T03:31:02.423108+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T04:40:47.523780+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T05:41:52.861872+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T06:42:28.259887+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T06:42:31.167385+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-24T06:42:32.283602+00:00
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-24T06:42:39.455474+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P488 (46045) VALUES LESS THAN (TO_DATE(' 2026-01-25 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P491 (46045) VALUES LESS THAN (TO_DATE(' 2026-01-25 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-24T06:42:39.579953+00:00
+Thread 1 cannot allocate new log, sequence 64
+Checkpoint not complete
+  Current log# 1 seq# 63 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T06:42:41.891695+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P468 (46045) VALUES LESS THAN (TO_DATE(' 2026-01-25 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P471 (46045) VALUES LESS THAN (TO_DATE(' 2026-01-25 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-24T06:42:42.588285+00:00
+Thread 1 advanced to log sequence 64 (LGWR switch),  current SCN: 3181923
+  Current log# 2 seq# 64 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T06:42:45.588993+00:00
+Thread 1 cannot allocate new log, sequence 65
+Checkpoint not complete
+  Current log# 2 seq# 64 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T06:42:46.573765+00:00
+Thread 1 advanced to log sequence 65 (LGWR switch),  current SCN: 3184290
+  Current log# 1 seq# 65 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T06:42:51.594349+00:00
+Thread 1 cannot allocate new log, sequence 66
+Checkpoint not complete
+  Current log# 1 seq# 65 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T06:42:52.692565+00:00
+Thread 1 advanced to log sequence 66 (LGWR switch),  current SCN: 3188299
+  Current log# 2 seq# 66 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T06:59:27.639269+00:00
+Thread 1 cannot allocate new log, sequence 67
+Checkpoint not complete
+  Current log# 2 seq# 66 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T06:59:30.655580+00:00
+Thread 1 advanced to log sequence 67 (LGWR switch),  current SCN: 3190318
+  Current log# 1 seq# 67 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T07:43:41.065941+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T08:44:24.330949+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T09:07:59.205695+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 727040K, new size 737280K
+2026-01-24T09:25:48.154455+00:00
+Thread 1 advanced to log sequence 68 (LGWR switch),  current SCN: 3197639
+  Current log# 2 seq# 68 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T09:28:02.688462+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 737280K, new size 757760K
+2026-01-24T10:36:41.077305+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T10:46:51.464407+00:00
+Thread 1 advanced to log sequence 69 (LGWR switch),  current SCN: 3206157
+  Current log# 1 seq# 69 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T10:46:54.456824+00:00
+Thread 1 cannot allocate new log, sequence 70
+Checkpoint not complete
+  Current log# 1 seq# 69 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T10:46:56.748152+00:00
+Thread 1 advanced to log sequence 70 (LGWR switch),  current SCN: 3209767
+  Current log# 2 seq# 70 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T10:46:59.608607+00:00
+Thread 1 cannot allocate new log, sequence 71
+Checkpoint not complete
+  Current log# 2 seq# 70 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T10:46:59.896992+00:00
+Thread 1 advanced to log sequence 71 (LGWR switch),  current SCN: 3216468
+  Current log# 1 seq# 71 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T10:47:03.458127+00:00
+Thread 1 cannot allocate new log, sequence 72
+Checkpoint not complete
+  Current log# 1 seq# 71 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T10:47:06.470219+00:00
+Thread 1 advanced to log sequence 72 (LGWR switch),  current SCN: 3223793
+  Current log# 2 seq# 72 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T10:56:46.808658+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 757760K, new size 768000K
+2026-01-24T11:36:44.639308+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T12:39:14.465887+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T13:31:14.213106+00:00
+Thread 1 advanced to log sequence 73 (LGWR switch),  current SCN: 3229187
+  Current log# 1 seq# 73 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T13:41:31.903375+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T15:10:26.829503+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T16:26:17.872634+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T16:56:11.043956+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 768000K, new size 778240K
+2026-01-24T16:56:16.042486+00:00
+Thread 1 advanced to log sequence 74 (LGWR switch),  current SCN: 3233437
+  Current log# 2 seq# 74 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T16:56:19.047061+00:00
+Thread 1 cannot allocate new log, sequence 75
+Checkpoint not complete
+  Current log# 2 seq# 74 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T16:56:19.535653+00:00
+Thread 1 advanced to log sequence 75 (LGWR switch),  current SCN: 3235545
+  Current log# 1 seq# 75 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T16:56:22.044206+00:00
+Thread 1 cannot allocate new log, sequence 76
+Checkpoint not complete
+  Current log# 1 seq# 75 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T16:56:24.887795+00:00
+Thread 1 advanced to log sequence 76 (LGWR switch),  current SCN: 3239718
+  Current log# 2 seq# 76 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T17:58:12.733533+00:00
+Thread 1 advanced to log sequence 77 (LGWR switch),  current SCN: 3245365
+  Current log# 1 seq# 77 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-24T20:16:07.960912+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T21:29:57.371349+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T22:00:37.072652+00:00
+Thread 1 advanced to log sequence 78 (LGWR switch),  current SCN: 3252795
+  Current log# 2 seq# 78 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-24T22:35:06.948084+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-24T23:43:11.327526+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T00:56:03.651461+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T02:39:45.810258+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T03:46:42.689498+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T03:46:48.210247+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 778240K, new size 788480K
+2026-01-25T04:52:16.192534+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T04:52:17.614770+00:00
+Thread 1 advanced to log sequence 79 (LGWR switch),  current SCN: 3255232
+  Current log# 1 seq# 79 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T05:57:10.576579+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T06:42:15.208555+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-25T06:42:17.002843+00:00
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-25T06:42:18.641762+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P508 (46046) VALUES LESS THAN (TO_DATE(' 2026-01-26 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P511 (46046) VALUES LESS THAN (TO_DATE(' 2026-01-26 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-25T06:42:19.698345+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P508 (46046) VALUES LESS THAN (TO_DATE(' 2026-01-26 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P511 (46046) VALUES LESS THAN (TO_DATE(' 2026-01-26 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-25T06:42:21.540514+00:00
+Thread 1 cannot allocate new log, sequence 80
+Checkpoint not complete
+  Current log# 1 seq# 79 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T06:42:23.433542+00:00
+Thread 1 advanced to log sequence 80 (LGWR switch),  current SCN: 3261734
+  Current log# 2 seq# 80 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T06:42:25.702568+00:00
+Thread 1 cannot allocate new log, sequence 81
+Checkpoint not complete
+  Current log# 2 seq# 80 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T06:42:26.671285+00:00
+Thread 1 advanced to log sequence 81 (LGWR switch),  current SCN: 3270622
+  Current log# 1 seq# 81 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T06:42:37.701641+00:00
+Thread 1 cannot allocate new log, sequence 82
+Checkpoint not complete
+  Current log# 1 seq# 81 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T06:42:38.778421+00:00
+Thread 1 advanced to log sequence 82 (LGWR switch),  current SCN: 3278102
+  Current log# 2 seq# 82 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T06:58:42.276266+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T08:02:52.525272+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T08:18:57.183978+00:00
+Thread 1 cannot allocate new log, sequence 83
+Checkpoint not complete
+  Current log# 2 seq# 82 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T08:19:00.203269+00:00
+Thread 1 advanced to log sequence 83 (LGWR switch),  current SCN: 3288409
+  Current log# 1 seq# 83 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T09:15:15.418244+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T10:17:19.746760+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T11:19:04.122838+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T12:34:58.891673+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T12:37:05.957020+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 788480K, new size 798720K
+2026-01-25T12:37:09.621331+00:00
+Thread 1 cannot allocate new log, sequence 84
+Private strand flush not complete
+  Current log# 1 seq# 83 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T12:37:11.972164+00:00
+Thread 1 advanced to log sequence 84 (LGWR switch),  current SCN: 3293210
+  Current log# 2 seq# 84 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T12:37:14.004783+00:00
+Thread 1 advanced to log sequence 85 (LGWR switch),  current SCN: 3295860
+  Current log# 1 seq# 85 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T12:37:18.625130+00:00
+Thread 1 cannot allocate new log, sequence 86
+Checkpoint not complete
+  Current log# 1 seq# 85 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T12:37:21.636163+00:00
+Thread 1 advanced to log sequence 86 (LGWR switch),  current SCN: 3300731
+  Current log# 2 seq# 86 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T12:47:07.177794+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 798720K, new size 819200K
+2026-01-25T12:50:04.449474+00:00
+Thread 1 cannot allocate new log, sequence 87
+Private strand flush not complete
+  Current log# 2 seq# 86 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T12:50:07.460101+00:00
+Thread 1 advanced to log sequence 87 (LGWR switch),  current SCN: 3306458
+  Current log# 1 seq# 87 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T14:27:26.821687+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T15:00:27.912575+00:00
+Thread 1 advanced to log sequence 88 (LGWR switch),  current SCN: 3311962
+  Current log# 2 seq# 88 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T15:01:29.508852+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 819200K, new size 829440K
+2026-01-25T15:36:08.739260+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T16:43:04.735729+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T17:54:35.658896+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T19:10:54.298508+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T20:27:46.274515+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T20:28:05.205541+00:00
+Thread 1 cannot allocate new log, sequence 89
+Private strand flush not complete
+  Current log# 2 seq# 88 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T20:28:08.209490+00:00
+Thread 1 advanced to log sequence 89 (LGWR switch),  current SCN: 3316262
+  Current log# 1 seq# 89 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T20:28:14.059045+00:00
+Thread 1 advanced to log sequence 90 (LGWR switch),  current SCN: 3318920
+  Current log# 2 seq# 90 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T20:28:17.197488+00:00
+Thread 1 cannot allocate new log, sequence 91
+Checkpoint not complete
+  Current log# 2 seq# 90 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T20:28:19.969131+00:00
+Thread 1 advanced to log sequence 91 (LGWR switch),  current SCN: 3321467
+  Current log# 1 seq# 91 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T20:28:23.195480+00:00
+Thread 1 cannot allocate new log, sequence 92
+Checkpoint not complete
+  Current log# 1 seq# 91 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T20:28:25.613593+00:00
+Thread 1 advanced to log sequence 92 (LGWR switch),  current SCN: 3329844
+  Current log# 2 seq# 92 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T20:28:25.889251+00:00
+Resize operation completed for file# 15, fname /opt/oracle/oradata/XE/undotbs01.dbf, old size 31744K, new size 41984K
+2026-01-25T20:28:29.214218+00:00
+Thread 1 cannot allocate new log, sequence 93
+Checkpoint not complete
+  Current log# 2 seq# 92 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-25T20:28:32.234270+00:00
+Thread 1 advanced to log sequence 93 (LGWR switch),  current SCN: 3334404
+  Current log# 1 seq# 93 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T21:40:14.997428+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T22:46:49.992586+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T23:51:30.027033+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-25T23:51:51.838627+00:00
+Thread 1 cannot allocate new log, sequence 94
+Checkpoint not complete
+  Current log# 1 seq# 93 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-25T23:51:54.845783+00:00
+Thread 1 advanced to log sequence 94 (LGWR switch),  current SCN: 3336017
+  Current log# 2 seq# 94 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-26T00:57:13.763913+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T02:12:05.218687+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T02:48:13.377253+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 829440K, new size 839680K
+2026-01-26T03:10:13.722095+00:00
+Thread 1 advanced to log sequence 95 (LGWR switch),  current SCN: 3339571
+  Current log# 1 seq# 95 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-26T03:16:23.184437+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T04:17:14.829188+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T05:18:23.437222+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T06:19:06.411575+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T07:20:12.039885+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T08:21:24.089944+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T08:21:50.550392+00:00
+Thread 1 advanced to log sequence 96 (LGWR switch),  current SCN: 3341518
+  Current log# 2 seq# 96 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-26T09:22:06.424323+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T10:23:18.521556+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T11:12:34.749661+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 839680K, new size 849920K
+2026-01-26T11:24:31.256895+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T12:05:01.729504+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 849920K, new size 860160K
+2026-01-26T12:05:14.785023+00:00
+Thread 1 advanced to log sequence 97 (LGWR switch),  current SCN: 3344955
+  Current log# 1 seq# 97 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-26T12:28:20.775149+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T13:34:57.228784+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T14:57:46.907018+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T14:58:31.311907+00:00
+Thread 1 advanced to log sequence 98 (LGWR switch),  current SCN: 3351966
+  Current log# 2 seq# 98 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-26T16:57:41.319549+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T18:11:23.246361+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T19:37:29.870325+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T21:03:33.020809+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T22:07:52.571275+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-26T22:08:01.132650+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P548 (46047) VALUES LESS THAN (TO_DATE(' 2026-01-27 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P551 (46047) VALUES LESS THAN (TO_DATE(' 2026-01-27 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-26T22:08:02.734130+00:00
+Thread 1 advanced to log sequence 99 (LGWR switch),  current SCN: 3356448
+  Current log# 1 seq# 99 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-26T22:08:14.750546+00:00
+Thread 1 advanced to log sequence 100 (LGWR switch),  current SCN: 3364373
+  Current log# 2 seq# 100 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-26T23:56:15.723910+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T00:58:44.646130+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T02:36:57.221547+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T02:36:57.227329+00:00
+Timed out trying to start process MZ00.
+2026-01-27T03:46:06.988790+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T03:46:30.070871+00:00
+Thread 1 cannot allocate new log, sequence 101
+Checkpoint not complete
+  Current log# 2 seq# 100 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-27T03:46:33.085941+00:00
+Thread 1 advanced to log sequence 101 (LGWR switch),  current SCN: 3369266
+  Current log# 1 seq# 101 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-27T05:12:46.748299+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T06:30:49.758816+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T07:46:57.878284+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T09:10:15.617750+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T09:10:26.938903+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 860160K, new size 890880K
+2026-01-27T09:10:27.024491+00:00
+XEPDB1(3):Resize operation completed for file# 10, fname /opt/oracle/oradata/XE/XEPDB1/sysaux01.dbf, old size 337920K, new size 348160K
+2026-01-27T09:10:41.950663+00:00
+Thread 1 cannot allocate new log, sequence 102
+Checkpoint not complete
+  Current log# 1 seq# 101 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-27T09:10:44.960128+00:00
+Thread 1 advanced to log sequence 102 (LGWR switch),  current SCN: 3374404
+  Current log# 2 seq# 102 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-27T09:20:28.249792+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 890880K, new size 901120K
+2026-01-27T10:21:56.478644+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T11:02:58.665260+00:00
+Thread 1 advanced to log sequence 103 (LGWR switch),  current SCN: 3386167
+  Current log# 1 seq# 103 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-27T11:28:35.334491+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T13:00:59.839627+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T14:32:10.788279+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T15:29:48.686544+00:00
+Thread 1 advanced to log sequence 104 (LGWR switch),  current SCN: 3389581
+  Current log# 2 seq# 104 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-27T16:01:36.162356+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T17:20:48.251600+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T17:27:13.117302+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 901120K, new size 911360K
+2026-01-27T18:10:42.163562+00:00
+Thread 1 advanced to log sequence 105 (LGWR switch),  current SCN: 3394332
+  Current log# 1 seq# 105 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-27T20:58:59.484361+00:00
+Thread 1 advanced to log sequence 106 (LGWR switch),  current SCN: 3403597
+  Current log# 2 seq# 106 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-27T21:13:41.490946+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T22:07:36.240742+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-27T22:07:37.744486+00:00
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-27T22:07:45.308149+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P560 (46048) VALUES LESS THAN (TO_DATE(' 2026-01-28 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P563 (46048) VALUES LESS THAN (TO_DATE(' 2026-01-28 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-27T22:07:47.941216+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P580 (46048) VALUES LESS THAN (TO_DATE(' 2026-01-28 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P583 (46048) VALUES LESS THAN (TO_DATE(' 2026-01-28 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-27T22:07:50.267852+00:00
+Thread 1 advanced to log sequence 107 (LGWR switch),  current SCN: 3408054
+  Current log# 1 seq# 107 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-27T22:07:54.384085+00:00
+Thread 1 advanced to log sequence 108 (LGWR switch),  current SCN: 3411095
+  Current log# 2 seq# 108 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-27T22:07:57.381739+00:00
+Thread 1 cannot allocate new log, sequence 109
+Checkpoint not complete
+  Current log# 2 seq# 108 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-27T22:08:00.389171+00:00
+Thread 1 advanced to log sequence 109 (LGWR switch),  current SCN: 3420026
+  Current log# 1 seq# 109 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-27T22:39:38.941493+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-27T22:39:42.172802+00:00
+Thread 1 cannot allocate new log, sequence 110
+Checkpoint not complete
+  Current log# 1 seq# 109 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-27T22:39:45.007175+00:00
+Thread 1 advanced to log sequence 110 (LGWR switch),  current SCN: 3430238
+  Current log# 2 seq# 110 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-27T22:39:48.116270+00:00
+Resize operation completed for file# 1, fname /opt/oracle/oradata/XE/system01.dbf, old size 906240K, new size 916480K
+2026-01-27T22:39:51.173372+00:00
+Thread 1 cannot allocate new log, sequence 111
+Checkpoint not complete
+  Current log# 2 seq# 110 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-27T22:39:51.376934+00:00
+Thread 1 advanced to log sequence 111 (LGWR switch),  current SCN: 3438090
+  Current log# 1 seq# 111 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-27T22:39:54.175542+00:00
+Thread 1 cannot allocate new log, sequence 112
+Checkpoint not complete
+  Current log# 1 seq# 111 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-27T22:39:57.190689+00:00
+Thread 1 advanced to log sequence 112 (LGWR switch),  current SCN: 3446934
+  Current log# 2 seq# 112 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-27T22:40:05.050723+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 911360K, new size 921600K
+2026-01-27T23:55:19.711591+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T01:01:49.193023+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T01:02:04.383935+00:00
+Thread 1 cannot allocate new log, sequence 113
+Checkpoint not complete
+  Current log# 2 seq# 112 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-28T01:02:07.398364+00:00
+Thread 1 advanced to log sequence 113 (LGWR switch),  current SCN: 3450164
+  Current log# 1 seq# 113 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T02:07:24.272241+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T03:13:08.800841+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T04:20:15.764770+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T05:29:56.555534+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T06:02:17.560813+00:00
+Thread 1 cannot allocate new log, sequence 114
+Checkpoint not complete
+  Current log# 1 seq# 113 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T06:02:20.564255+00:00
+Thread 1 advanced to log sequence 114 (LGWR switch),  current SCN: 3452237
+  Current log# 2 seq# 114 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-28T06:03:59.067987+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 921600K, new size 942080K
+2026-01-28T06:30:28.217720+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T07:53:50.765690+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T09:06:16.015343+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T09:06:40.702275+00:00
+Thread 1 advanced to log sequence 115 (LGWR switch),  current SCN: 3457321
+  Current log# 1 seq# 115 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T10:07:16.867119+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T11:07:48.482350+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T12:16:20.194027+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T13:26:25.895620+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T13:36:46.731093+00:00
+Thread 1 advanced to log sequence 116 (LGWR switch),  current SCN: 3459699
+  Current log# 2 seq# 116 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-28T14:37:56.373998+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T15:01:41.578803+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 942080K, new size 952320K
+2026-01-28T15:58:14.761813+00:00
+Thread 1 advanced to log sequence 117 (LGWR switch),  current SCN: 3467846
+  Current log# 1 seq# 117 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T16:30:46.714397+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T17:40:52.195657+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T18:10:51.034124+00:00
+Thread 1 advanced to log sequence 118 (LGWR switch),  current SCN: 3475865
+  Current log# 2 seq# 118 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-28T18:11:27.103997+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 952320K, new size 972800K
+2026-01-28T19:13:06.946205+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T20:18:53.722157+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T21:31:00.903334+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T22:35:53.946323+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-28T22:35:53.965966+00:00
+Timed out trying to start process MZ00.
+2026-01-28T22:35:56.828740+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-28T22:36:02.308220+00:00
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-28T22:36:07.113217+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P576 (46049) VALUES LESS THAN (TO_DATE(' 2026-01-29 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P579 (46049) VALUES LESS THAN (TO_DATE(' 2026-01-29 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-28T22:36:08.954618+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P588 (46049) VALUES LESS THAN (TO_DATE(' 2026-01-29 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P591 (46049) VALUES LESS THAN (TO_DATE(' 2026-01-29 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-28T22:36:10.373565+00:00
+Thread 1 advanced to log sequence 119 (LGWR switch),  current SCN: 3483430
+  Current log# 1 seq# 119 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T22:36:13.723742+00:00
+Thread 1 cannot allocate new log, sequence 120
+Checkpoint not complete
+  Current log# 1 seq# 119 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T22:36:15.538198+00:00
+Thread 1 advanced to log sequence 120 (LGWR switch),  current SCN: 3485717
+  Current log# 2 seq# 120 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-28T22:36:19.729050+00:00
+Thread 1 cannot allocate new log, sequence 121
+Checkpoint not complete
+  Current log# 2 seq# 120 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-28T22:36:21.817338+00:00
+Thread 1 advanced to log sequence 121 (LGWR switch),  current SCN: 3494612
+  Current log# 1 seq# 121 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T22:36:25.737905+00:00
+Thread 1 cannot allocate new log, sequence 122
+Checkpoint not complete
+  Current log# 1 seq# 121 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T22:36:27.929782+00:00
+Thread 1 advanced to log sequence 122 (LGWR switch),  current SCN: 3495859
+  Current log# 2 seq# 122 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-28T22:36:31.740883+00:00
+Thread 1 cannot allocate new log, sequence 123
+Checkpoint not complete
+  Current log# 2 seq# 122 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-28T22:36:34.053644+00:00
+Thread 1 advanced to log sequence 123 (LGWR switch),  current SCN: 3505105
+  Current log# 1 seq# 123 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T22:36:37.741787+00:00
+Thread 1 cannot allocate new log, sequence 124
+Checkpoint not complete
+  Current log# 1 seq# 123 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-28T22:36:40.756777+00:00
+Thread 1 advanced to log sequence 124 (LGWR switch),  current SCN: 3513315
+  Current log# 2 seq# 124 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-28T23:41:48.220568+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T00:50:41.097693+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T00:50:45.095105+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 972800K, new size 983040K
+2026-01-29T00:50:45.253632+00:00
+XEPDB1(3):Resize operation completed for file# 10, fname /opt/oracle/oradata/XE/XEPDB1/sysaux01.dbf, old size 348160K, new size 358400K
+2026-01-29T01:57:17.966371+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T02:42:14.833144+00:00
+Thread 1 cannot allocate new log, sequence 125
+Checkpoint not complete
+  Current log# 2 seq# 124 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-29T02:42:17.851198+00:00
+Thread 1 advanced to log sequence 125 (LGWR switch),  current SCN: 3515781
+  Current log# 1 seq# 125 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-29T02:51:31.350164+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 983040K, new size 993280K
+2026-01-29T03:58:23.936936+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T03:58:32.399114+00:00
+Thread 1 advanced to log sequence 126 (LGWR switch),  current SCN: 3523103
+  Current log# 2 seq# 126 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-29T05:02:40.264930+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T06:43:52.067499+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T07:51:54.669591+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T09:04:45.816262+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T09:04:59.018350+00:00
+Thread 1 advanced to log sequence 127 (LGWR switch),  current SCN: 3526811
+  Current log# 1 seq# 127 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-29T10:19:33.802739+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T10:30:45.579049+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 993280K, new size 1003520K
+2026-01-29T11:20:11.749382+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T12:32:44.823189+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T13:33:28.156143+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T13:34:14.076684+00:00
+Thread 1 cannot allocate new log, sequence 128
+Checkpoint not complete
+  Current log# 1 seq# 127 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-29T13:34:17.090801+00:00
+Thread 1 advanced to log sequence 128 (LGWR switch),  current SCN: 3528520
+  Current log# 2 seq# 128 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-29T14:34:40.747021+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T15:35:52.713541+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T16:36:34.908412+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T17:53:55.929337+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T19:09:51.972052+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T19:10:08.860179+00:00
+Thread 1 cannot allocate new log, sequence 129
+Checkpoint not complete
+  Current log# 2 seq# 128 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-29T19:10:11.868489+00:00
+Thread 1 advanced to log sequence 129 (LGWR switch),  current SCN: 3530323
+  Current log# 1 seq# 129 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-29T20:11:55.658740+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T21:14:54.942727+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T22:21:56.379641+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T22:22:01.825108+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P620 (46050) VALUES LESS THAN (TO_DATE(' 2026-01-30 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P623 (46050) VALUES LESS THAN (TO_DATE(' 2026-01-30 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-29T22:22:04.217955+00:00
+Thread 1 cannot allocate new log, sequence 130
+Checkpoint not complete
+  Current log# 1 seq# 129 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-29T22:22:07.226337+00:00
+Thread 1 advanced to log sequence 130 (LGWR switch),  current SCN: 3534949
+  Current log# 2 seq# 130 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-29T23:28:03.176853+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-29T23:28:19.958368+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 1003520K, new size 1013760K
+2026-01-29T23:28:20.748311+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-29T23:28:23.189533+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P580 (46050) VALUES LESS THAN (TO_DATE(' 2026-01-30 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P583 (46050) VALUES LESS THAN (TO_DATE(' 2026-01-30 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-29T23:28:25.762686+00:00
+Thread 1 cannot allocate new log, sequence 131
+Checkpoint not complete
+  Current log# 2 seq# 130 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-29T23:28:28.561028+00:00
+Thread 1 advanced to log sequence 131 (LGWR switch),  current SCN: 3539014
+  Current log# 1 seq# 131 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-29T23:28:31.680757+00:00
+Thread 1 cannot allocate new log, sequence 132
+Checkpoint not complete
+  Current log# 1 seq# 131 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-29T23:28:31.794635+00:00
+Thread 1 advanced to log sequence 132 (LGWR switch),  current SCN: 3541195
+  Current log# 2 seq# 132 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T00:32:29.998950+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P584 (46051) VALUES LESS THAN (TO_DATE(' 2026-01-31 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P587 (46051) VALUES LESS THAN (TO_DATE(' 2026-01-31 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-30T00:32:30.493702+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T00:32:35.301339+00:00
+Thread 1 cannot allocate new log, sequence 133
+Checkpoint not complete
+  Current log# 2 seq# 132 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T00:32:38.417766+00:00
+Thread 1 advanced to log sequence 133 (LGWR switch),  current SCN: 3545836
+  Current log# 1 seq# 133 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T00:32:41.301409+00:00
+Thread 1 cannot allocate new log, sequence 134
+Checkpoint not complete
+  Current log# 1 seq# 133 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T00:32:44.320564+00:00
+Thread 1 advanced to log sequence 134 (LGWR switch),  current SCN: 3553580
+  Current log# 2 seq# 134 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T01:49:05.566591+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T02:51:24.580682+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T02:51:44.686056+00:00
+Thread 1 cannot allocate new log, sequence 135
+Checkpoint not complete
+  Current log# 2 seq# 134 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T02:51:47.706231+00:00
+Thread 1 advanced to log sequence 135 (LGWR switch),  current SCN: 3554923
+  Current log# 1 seq# 135 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T03:53:28.892803+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T04:54:50.436084+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T06:09:09.747679+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T07:11:35.132699+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T08:13:13.839276+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T09:30:01.814531+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T09:30:24.779641+00:00
+Thread 1 advanced to log sequence 136 (LGWR switch),  current SCN: 3558085
+  Current log# 2 seq# 136 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T10:33:03.987428+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T11:35:45.353928+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T11:36:09.503803+00:00
+Thread 1 cannot allocate new log, sequence 137
+Checkpoint not complete
+  Current log# 2 seq# 136 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T11:36:12.531744+00:00
+Thread 1 advanced to log sequence 137 (LGWR switch),  current SCN: 3561596
+  Current log# 1 seq# 137 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T12:33:18.472948+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 1013760K, new size 1054720K
+2026-01-30T12:45:37.113456+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T13:46:19.226365+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T14:47:32.386277+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T15:48:14.575435+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T16:06:28.772970+00:00
+Thread 1 cannot allocate new log, sequence 138
+Checkpoint not complete
+  Current log# 1 seq# 137 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T16:49:26.467707+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T16:49:27.238200+00:00
+Thread 1 advanced to log sequence 138 (LGWR switch),  current SCN: 3566067
+  Current log# 2 seq# 138 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T17:50:31.650795+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T18:51:14.097748+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T19:07:57.731651+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 1054720K, new size 1064960K
+2026-01-30T19:43:40.668146+00:00
+Thread 1 advanced to log sequence 139 (LGWR switch),  current SCN: 3570525
+  Current log# 1 seq# 139 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T20:09:14.397082+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T21:15:24.462876+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T22:27:23.736460+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T22:27:25.690049+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-30T22:27:31.463920+00:00
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-30T22:27:36.578653+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P624 (46051) VALUES LESS THAN (TO_DATE(' 2026-01-31 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P627 (46051) VALUES LESS THAN (TO_DATE(' 2026-01-31 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-30T22:27:37.396294+00:00
+Thread 1 advanced to log sequence 140 (LGWR switch),  current SCN: 3574779
+  Current log# 2 seq# 140 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T22:27:39.864345+00:00
+Thread 1 cannot allocate new log, sequence 141
+Checkpoint not complete
+  Current log# 2 seq# 140 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T22:27:40.734697+00:00
+Thread 1 advanced to log sequence 141 (LGWR switch),  current SCN: 3576789
+  Current log# 1 seq# 141 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T22:27:43.392137+00:00
+Thread 1 cannot allocate new log, sequence 142
+Checkpoint not complete
+  Current log# 1 seq# 141 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T22:27:45.773771+00:00
+Thread 1 advanced to log sequence 142 (LGWR switch),  current SCN: 3587538
+  Current log# 2 seq# 142 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T22:27:51.904874+00:00
+Thread 1 cannot allocate new log, sequence 143
+Checkpoint not complete
+  Current log# 2 seq# 142 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-30T22:27:52.901379+00:00
+Thread 1 advanced to log sequence 143 (LGWR switch),  current SCN: 3594692
+  Current log# 1 seq# 143 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T23:32:11.900912+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-30T23:32:16.988393+00:00
+Thread 1 cannot allocate new log, sequence 144
+Checkpoint not complete
+  Current log# 1 seq# 143 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-30T23:32:20.003138+00:00
+Thread 1 advanced to log sequence 144 (LGWR switch),  current SCN: 3602789
+  Current log# 2 seq# 144 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T00:38:32.856738+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T00:40:01.067985+00:00
+Resize operation completed for file# 3, fname /opt/oracle/oradata/XE/sysaux01.dbf, old size 1064960K, new size 1075200K
+2026-01-31T00:48:08.199329+00:00
+Thread 1 advanced to log sequence 145 (LGWR switch),  current SCN: 3609751
+  Current log# 1 seq# 145 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T02:00:00.573960+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T03:05:18.792498+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T03:05:35.183440+00:00
+Thread 1 advanced to log sequence 146 (LGWR switch),  current SCN: 3614952
+  Current log# 2 seq# 146 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T04:16:16.007597+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T05:33:50.889874+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T06:36:06.928917+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T06:36:13.270090+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P640 (46052) VALUES LESS THAN (TO_DATE(' 2026-02-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P643 (46052) VALUES LESS THAN (TO_DATE(' 2026-02-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-31T06:36:15.498928+00:00
+Thread 1 cannot allocate new log, sequence 147
+Checkpoint not complete
+  Current log# 2 seq# 146 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T06:36:17.364751+00:00
+Thread 1 advanced to log sequence 147 (LGWR switch),  current SCN: 3619342
+  Current log# 1 seq# 147 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T07:47:36.725421+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T08:48:19.022032+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T08:48:35.346296+00:00
+Thread 1 cannot allocate new log, sequence 148
+Checkpoint not complete
+  Current log# 1 seq# 147 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T08:48:38.358359+00:00
+Thread 1 advanced to log sequence 148 (LGWR switch),  current SCN: 3621564
+  Current log# 2 seq# 148 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T09:49:31.084052+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T10:50:04.057853+00:00
+Begin automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-31T10:50:05.169765+00:00
+End automatic SQL Tuning Advisor run for special tuning task  "SYS_AUTO_SQL_TUNING_TASK"
+2026-01-31T10:50:06.384248+00:00
+TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P600 (46052) VALUES LESS THAN (TO_DATE(' 2026-02-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P603 (46052) VALUES LESS THAN (TO_DATE(' 2026-02-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-01-31T10:50:07.908864+00:00
+Thread 1 cannot allocate new log, sequence 149
+Checkpoint not complete
+  Current log# 2 seq# 148 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T10:50:09.165968+00:00
+Thread 1 advanced to log sequence 149 (LGWR switch),  current SCN: 3626901
+  Current log# 1 seq# 149 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T10:50:11.338340+00:00
+Thread 1 cannot allocate new log, sequence 150
+Checkpoint not complete
+  Current log# 1 seq# 149 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T10:50:12.371847+00:00
+Thread 1 advanced to log sequence 150 (LGWR switch),  current SCN: 3629196
+  Current log# 2 seq# 150 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T10:50:15.978303+00:00
+Thread 1 cannot allocate new log, sequence 151
+Checkpoint not complete
+  Current log# 2 seq# 150 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T10:50:18.506429+00:00
+Thread 1 advanced to log sequence 151 (LGWR switch),  current SCN: 3631182
+  Current log# 1 seq# 151 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T10:50:22.807611+00:00
+Thread 1 cannot allocate new log, sequence 152
+Checkpoint not complete
+  Current log# 1 seq# 151 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T10:50:24.619253+00:00
+Thread 1 advanced to log sequence 152 (LGWR switch),  current SCN: 3635930
+  Current log# 2 seq# 152 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T10:58:45.905155+00:00
+Thread 1 advanced to log sequence 153 (LGWR switch),  current SCN: 3637500
+  Current log# 1 seq# 153 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T11:03:16.360413+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T12:19:51.870070+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T13:21:55.155795+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T13:58:32.518169+00:00
+Thread 1 advanced to log sequence 154 (LGWR switch),  current SCN: 3645410
+  Current log# 2 seq# 154 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T14:54:16.934870+00:00
+Thread 1 advanced to log sequence 155 (LGWR switch),  current SCN: 3650772
+  Current log# 1 seq# 155 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T14:54:19.724747+00:00
+Thread 1 cannot allocate new log, sequence 156
+Checkpoint not complete
+  Current log# 1 seq# 155 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T14:54:20.438320+00:00
+Thread 1 advanced to log sequence 156 (LGWR switch),  current SCN: 3655306
+  Current log# 2 seq# 156 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T15:08:57.186440+00:00
+Thread 1 advanced to log sequence 157 (LGWR switch),  current SCN: 3657937
+  Current log# 1 seq# 157 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T15:37:21.139128+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T16:49:32.597469+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T19:12:40.015926+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T20:50:04.048854+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T20:50:14.116335+00:00
+Thread 1 advanced to log sequence 158 (LGWR switch),  current SCN: 3665982
+  Current log# 2 seq# 158 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T20:50:20.120576+00:00
+Thread 1 cannot allocate new log, sequence 159
+Checkpoint not complete
+  Current log# 2 seq# 158 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T20:50:21.430756+00:00
+Thread 1 advanced to log sequence 159 (LGWR switch),  current SCN: 3667962
+  Current log# 1 seq# 159 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T20:50:26.120764+00:00
+Thread 1 cannot allocate new log, sequence 160
+Checkpoint not complete
+  Current log# 1 seq# 159 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-01-31T20:50:29.132565+00:00
+Thread 1 advanced to log sequence 160 (LGWR switch),  current SCN: 3672230
+  Current log# 2 seq# 160 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-01-31T21:59:49.235380+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-01-31T23:18:49.890667+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-02-01T00:19:03.388488+00:00
+Thread 1 advanced to log sequence 161 (LGWR switch),  current SCN: 3677699
+  Current log# 1 seq# 161 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-02-01T01:52:51.523620+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-02-01T03:04:49.340473+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-02-01T11:05:58.842149+00:00
+Warning: VKTM detected a forward time drift. 
+Time drifts can result in unexpected behavior such as time-outs. 
+Please see the VKTM trace file for more details:
+/opt/oracle/diag/rdbms/xe/XE/trace/XE_vktm_56.trc
+2026-02-01T11:06:05.783173+00:00
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTHEAD_HISTORY: ADDED INTERVAL PARTITION SYS_P648 (46053) VALUES LESS THAN (TO_DATE(' 2026-02-02 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+XEPDB1(3):TABLE SYS.WRI$_OPTSTAT_HISTGRM_HISTORY: ADDED INTERVAL PARTITION SYS_P651 (46053) VALUES LESS THAN (TO_DATE(' 2026-02-02 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+2026-02-01T11:06:08.651611+00:00
+Thread 1 cannot allocate new log, sequence 162
+Checkpoint not complete
+  Current log# 1 seq# 161 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-02-01T11:06:10.114500+00:00
+Thread 1 advanced to log sequence 162 (LGWR switch),  current SCN: 3689341
+  Current log# 2 seq# 162 mem# 0: /opt/oracle/oradata/XE/redo02.log
+CONTAINER: starting up...
+CONTAINER: database already initialized.
+CONTAINER: starting up Oracle Database...
+
+LSNRCTL for Linux: Version 21.0.0.0.0 - Production on 23-FEB-2026 07:15:23
+
+Copyright (c) 1991, 2021, Oracle.  All rights reserved.
+
+Starting /opt/oracle/product/21c/dbhomeXE/bin/tnslsnr: please wait...
+
+TNSLSNR for Linux: Version 21.0.0.0.0 - Production
+System parameter file is /opt/oracle/homes/OraDBHome21cXE/network/admin/listener.ora
+Log messages written to /opt/oracle/diag/tnslsnr/71ea5dd6fc9d/listener/alert/log.xml
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC_FOR_XE)))
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=0.0.0.0)(PORT=1521)))
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC_FOR_XE)))
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for Linux: Version 21.0.0.0.0 - Production
+Start Date                23-FEB-2026 07:15:25
+Uptime                    0 days 0 hr. 0 min. 0 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Default Service           XE
+Listener Parameter File   /opt/oracle/homes/OraDBHome21cXE/network/admin/listener.ora
+Listener Log File         /opt/oracle/diag/tnslsnr/71ea5dd6fc9d/listener/alert/log.xml
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC_FOR_XE)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=0.0.0.0)(PORT=1521)))
+The listener supports no services
+The command completed successfully
+ORACLE instance started.
+
+Total System Global Area 1610612120 bytes
+Fixed Size		    9686424 bytes
+Variable Size		 1040187392 bytes
+Database Buffers	  553648128 bytes
+Redo Buffers		    7090176 bytes
+Database mounted.
+Database opened.
+
+CONTAINER: WARNING: $ORACLE_PASSWORD has been specified but the database is already initialized. The password will be ignored.
+CONTAINER: WARNING: If you want to reset the password, please run the resetPassword command, e.g. 'docker|podman exec <container name|id> resetPassword <your password>'.
+
+#########################
+DATABASE IS READY TO USE!
+#########################
+
+################################################
+NOTICE: YOU ARE USING AN OLD IMAGE VERSION!
+PLEASE CONSIDER UPGRADING TO gvenzl/oracle-free!
+################################################
+
+##################################################################
+CONTAINER: The following output is now from the alert_XE.log file:
+##################################################################
+ORA-06512: at "SYS.DBMS_QOPATCH", line 2327
+ORA-06512: at "SYS.DBMS_QOPATCH", line 854
+ORA-06512: at "SYS.DBMS_QOPATCH", line 634
+ORA-06512: at "SYS.DBMS_QOPATCH", line 2309
+
+===========================================================
+Dumping current patch information
+===========================================================
+Unable to obtain current patch information due to error: 20013
+===========================================================
+2026-02-23T07:15:41.393159+00:00
+Thread 1 cannot allocate new log, sequence 164
+Private strand flush not complete
+  Current log# 1 seq# 163 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-02-23T07:15:42.247654+00:00
+Thread 1 advanced to log sequence 164 (LGWR switch),  current SCN: 4698974
+  Current log# 2 seq# 164 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-02-23T07:15:44.399511+00:00
+Thread 1 cannot allocate new log, sequence 165
+Checkpoint not complete
+  Current log# 2 seq# 164 mem# 0: /opt/oracle/oradata/XE/redo02.log
+2026-02-23T07:15:46.903977+00:00
+Thread 1 advanced to log sequence 165 (LGWR switch),  current SCN: 4700586
+  Current log# 1 seq# 165 mem# 0: /opt/oracle/oradata/XE/redo01.log
+2026-02-23T07:25:38.935191+00:00
+Thread 1 advanced to log sequence 166 (LGWR switch),  current SCN: 4705117
+  Current log# 2 seq# 166 mem# 0: /opt/oracle/oradata/XE/redo02.log
+mrfaijan@mrs-MacBook-Air ~ % docker exec -it oracle-xe-21c sqlplus system/oracle@XEPDB1
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Mon Feb 23 07:29:26 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Last Successful login time: Mon Jan 19 2026 10:01:48 +00:00
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> 
